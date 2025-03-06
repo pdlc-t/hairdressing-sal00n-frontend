@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import ColorBox from './components/ColorBox';
 import ColorInput from './components/ColorInput'
 
