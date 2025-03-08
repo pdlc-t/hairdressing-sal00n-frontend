@@ -1,13 +1,13 @@
 .outer {
   display: flex;
   flex-direction: column;
-  height: 1000px;
+  height: 100vh;
 }
 
 .navbar {
-  background-color: #004c4c;
-  color: #ffffff;
   flex: 1;
+  background: linear-gradient(135deg, #004c4c, #66b2b2);
+  color: #ffffff;
   border-bottom: 1px black solid;
 }
 
@@ -44,7 +44,7 @@
 /* Inner content section */
 
 .inner {
-  flex: 11;
+  flex: 10;
   display: flex;
   flex-direction: row;
   color: #ffffff;
@@ -68,7 +68,7 @@
 
 .main {
   flex: 10;
-  background-color: #ffffff;
+  background-color: #004c4c;
   height: 100%;
 }
 
