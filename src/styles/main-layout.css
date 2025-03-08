@@ -1,0 +1,77 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+}
+
+.navbar {
+  background-color: #004c4c;
+  color: #ffffff;
+  flex: 1;
+  border-bottom: 1px black solid;
+}
+
+/* Take up the whole screen width but add some padding */
+.container {
+  max-width: 100%;
+  margin: 0px auto;
+  padding: 0px 30px;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Take all the space of the navbar div to center properly */
+  height: 100%;
+}
+
+.navbar .logo {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+
+/* Inner content section */
+
+.inner {
+  flex: 11;
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+}
+
+.tabs-side-bar {
+  flex: 1;
+  background-color: #004c4c;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 30px;
+}
+
+.tabs-side-bar ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 10;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
