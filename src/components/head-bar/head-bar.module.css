@@ -13,12 +13,21 @@
 
 .accountButton {
   display: flex;
+  padding: 0px 30px 0px 20px;
+  justify-content: space-between;
+  align-items: center;
   background: #ba8e23;
-  height: 80%;
-  width:150px;
+  height: 60%;
+  width:200px;
   font: inherit;
   color: #ffffff;
   border-radius: 5px;
-  align-items: center;
-  justify-content: center;
+}
+
+.accountButton img {
+  height: 70%;
+}
+
+.accountButton h2 {
+  font-size: 20px;
 }
