@@ -1,0 +1,58 @@
+.appointmentsList {
+  margin-left: 30px;
+  padding-bottom: 10px;
+}
+
+.appointmentsList h1 {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
+
+.cardContainer {
+  display: grid;
+  padding: 15px;
+  padding-left: 30px;
+  grid-template-areas:
+    'service service . icon icon'
+    '. . . icon icon'
+    'date date . icon icon'
+    '. . . icon icon'
+    '. . . icon icon'
+    '. . . . .'
+    '. . . details details';
+
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin: 20px 0px;
+  height: 200px;
+  border-radius: 50px 0px 50px 0px;
+  background: #007474;
+  color: white;
+  box-shadow: 5px 5px 0px 0px #254621;
+}
+
+.cardContainer .serviceName {
+  grid-area: service;
+}
+
+.cardContainer .date {
+  grid-area: date;
+}
+
+.cardContainer .iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: icon;
+  height: 100%;
+}
+
+.cardContainer .icon {
+  height: 100%;
+}
+
+.cardContainer .detailsButton {
+  grid-area: details;
+  text-align: center;
+}

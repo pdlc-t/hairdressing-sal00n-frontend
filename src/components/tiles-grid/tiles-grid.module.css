@@ -1,0 +1,33 @@
+.container h1 {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
+
+.tilesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  width: 100%;
+  gap: 10px 10px;
+}
+
+.tile {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #007474;
+  border-radius: 5px;
+  color: #ffffff;
+  box-shadow: 5px 5px 0px 0px #254621;
+}
+
+.tileIcon {
+  height: 50%;
+  margin: 15px;
+}

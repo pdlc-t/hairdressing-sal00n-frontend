@@ -1,0 +1,27 @@
+.outer {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  min-width: 250px;
+  background: #00563f;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 6;
+}
+
+.right .heading {
+  height: 15%;
+  min-height: 125px;;
+}
+
+.right .main {
+  flex: 1;
+  overflow: auto;
+}

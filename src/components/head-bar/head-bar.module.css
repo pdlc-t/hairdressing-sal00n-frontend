@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height:100%;
+  border-bottom: 5px #007474 solid;
+}
+
+.container h1 {
+  padding-left: 30px;
+}
+
+.accountButton {
+  display: flex;
+  background: #ba8e23;
+  height: 80%;
+  width:150px;
+  font: inherit;
+  color: #ffffff;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
