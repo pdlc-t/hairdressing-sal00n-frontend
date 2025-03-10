@@ -1,7 +1,7 @@
 import React from 'react'
 import UpcomingAppointmentsList from '../../components/upcoming-appointments-list/UpcomingAppointmentsList'
 import TilesGrid from '../../components/tiles-grid/TilesGrid'
-import classes from './dashboard-page.module.css'
+import classes from './home-page.module.css'
 
 const DashboardPage = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import classes from './tabs-bar.module.css'
 
-const TabButton = ({text, isActive, setActive}) => {
+const TabButton = ({text, isActive, setActive }) => {
 
   return (
     <Link 

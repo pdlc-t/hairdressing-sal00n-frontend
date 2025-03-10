@@ -9,6 +9,10 @@
   margin: 20px;
 }
 
+.appointmentsList ul {
+  list-style: none;
+}
+
 .cardContainer {
   display: grid;
   padding: 15px;

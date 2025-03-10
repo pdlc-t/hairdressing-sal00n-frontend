@@ -1,0 +1,9 @@
+.krolikContainer {
+  height: 100%;
+}
+
+.krolik {
+  display: block;
+  height: 100%;
+  width: 100%;
+}

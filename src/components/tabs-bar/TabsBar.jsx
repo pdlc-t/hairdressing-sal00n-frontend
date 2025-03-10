@@ -14,9 +14,9 @@ const TabsBar = () => {
 
         <ul className={`${classes.tabsList}`}>
           {/* Generate the tabs with passing tab activation function down */}
-          {["Home", "Make an appointment", "Visits history", "Browse the offer"].map(tab => (
-            <li>
-              <TabButton text={tab} isActive={activeTab === tab} setActive={setActiveTab} />
+          {["Home", "Make an appointment", "Visits history", "Browse the offer", "Królik"].map((tab, index) => (
+            <li key={index} >
+              <TabButton text={tab} isActive={activeTab === tab} setActive={setActiveTab}  />
             </li>
           ))}
         </ul>
