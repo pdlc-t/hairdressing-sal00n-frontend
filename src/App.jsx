@@ -9,6 +9,7 @@ import InnerLayout from './layouts/inner-layout/InnerLayout';
 import HomePage from './pages/home-page/HomePage';
 import KrolikPage from './pages/krolik-page/KrolikPage';
 import './global.css';
+import OfferPage from "./pages/offer-page/OfferPage";
 
 function App() {
   const router = createBrowserRouter(
@@ -17,7 +18,7 @@ function App() {
         <Route path="home" element={<HomePage />} />
         <Route path="make an appointment" element={<HomePage />} />
         <Route path="visits history" element={<HomePage />} />
-        <Route path="browse the offer" element={<HomePage />} />
+        <Route path="browse the offer" element={<OfferPage />} />
         <Route path="królik" element={<KrolikPage />} />
       </Route>
     )

@@ -1,0 +1,37 @@
+[
+  {
+  "productName": "Szampon DX2",
+  "price": 10,
+  "amount": 30,
+  "producer": "DX2.sp.zoo",
+  "description": "Przykładowy opis szamponu."
+  },
+  {
+    "productName": "Szampon DX2",
+    "price": 10,
+    "amount": 30,
+    "producer": "DX2.sp.zoo",
+    "description": "Przykładowy opis szamponu."
+  },
+  {
+    "productName": "Szampon DX2",
+    "price": 10,
+    "amount": 30,
+    "producer": "DX2.sp.zoo",
+    "description": "Przykładowy opis szamponu."
+  },
+  {
+    "productName": "Szampon DX2",
+    "price": 10,
+    "amount": 30,
+    "producer": "DX2.sp.zoo",
+    "description": "Przykładowy opis szamponu."
+  },
+  {
+    "productName": "Szampon DX2",
+    "price": 10,
+    "amount": 30,
+    "producer": "DX2.sp.zoo",
+    "description": "Przykładowy opis szamponu."
+  }
+]
