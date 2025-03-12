@@ -6,6 +6,9 @@ const OfferPage = () => {
     return (
         <div className={`${classes.container}`}>
             <section className={`${classes.salonGrid}`}>
+                <h2>
+                    <center>Oferta naszego sal00nu:</center>
+                </h2>
                 <Sal00nItemGrid />
             </section>
         </div>

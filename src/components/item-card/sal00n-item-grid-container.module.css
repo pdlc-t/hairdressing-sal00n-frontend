@@ -1,31 +1,61 @@
-/* sal00n-item-grid-container.module.css */
 .gridContainer {
-    padding: 20px;
+    padding: 25px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative; /* Dodane dla lepszego pozycjonowania */
 }
 
 .toggleContainer {
-    margin-bottom: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* Przycisk do prawej */
+    margin-bottom: 20px;
+    padding-right: 15px; /* Dodatkowy odstęp od prawej krawędzi */
 }
 
 .itemsContainer {
     display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(2, minmax(450px, 1fr));
+    gap: 30px;
     justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .itemsContainer {
+        grid-template-columns: repeat(2, minmax(400px, 1fr));
+    }
 }
 
 @media (max-width: 992px) {
     .itemsContainer {
-        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, minmax(350px, 1fr));
+        gap: 25px;
+    }
+
+    .toggleContainer {
+        padding-right: 10px;
     }
 }
 
 @media (max-width: 768px) {
     .itemsContainer {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(300px, 1fr);
+    }
+
+    .toggleContainer {
+        justify-content: center; /* Na mobile wyśrodkuj */
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .cardContainer {
+        width: 100%;
+        height: 180px;
+        margin: 10px 0;
+    }
+
+    .flipCardFront,
+    .flipCardBack {
+        border-radius: 90px;
+        padding: 20px;
     }
 }

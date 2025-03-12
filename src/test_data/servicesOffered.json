@@ -33,5 +33,12 @@
     "time": 30,
     "availability": "dostępne",
     "description": "Przykładowy opis usługi strzyżenia męskiego."
+  },
+  {
+    "serviceName": "Farbowanie włosów długich",
+    "price": 50,
+    "time": 30,
+    "availability": "dostępne",
+    "description": "Przykładowy opis usługi farbowania włosów długich.Przykładowy opis usługi farbowania włosów długich.Przykładowy opis usługi farbowania włosów długich.Przykładowy opis usługi farbowania włosów długich.Przykładowy opis usługi farbowania włosów długich.Przykładowy opis usługi farbowania włosów długich."
   }
 ]
