@@ -25,6 +25,12 @@
   border-radius: 5px;
   color: #ffffff;
   box-shadow: 5px 5px 0px 0px #254621;
+  transition: 0.5s;
+}
+
+.tile:hover {
+  transform: translateY(-0.25rem);
+  color: #ba8e23;
 }
 
 .tileIcon {

@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 450px 10px 10px; /* Uwzględnia HeadBar */
+}
+
+
+.salonGrid {
+    width: 100%;
+    max-width: 1200px;
+}
