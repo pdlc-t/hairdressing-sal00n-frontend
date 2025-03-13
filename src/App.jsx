@@ -8,6 +8,7 @@ import {
 import InnerLayout from './layouts/inner-layout/InnerLayout';
 import HomePage from './pages/home-page/HomePage';
 import KrolikPage from './pages/krolik-page/KrolikPage';
+import HistoryPage from './pages/history-page';
 import './global.css';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Route path="/" element={<InnerLayout />}>
         <Route path="home" element={<HomePage />} />
         <Route path="make an appointment" element={<HomePage />} />
-        <Route path="visits history" element={<HomePage />} />
+        <Route path="visits history" element={<HistoryPage />} />
         <Route path="browse the offer" element={<HomePage />} />
         <Route path="królik" element={<KrolikPage />} />
       </Route>
