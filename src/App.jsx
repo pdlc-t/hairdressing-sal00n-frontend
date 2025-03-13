@@ -8,7 +8,7 @@ import {
 import InnerLayout from './layouts/inner-layout/InnerLayout';
 import HomePage from './pages/home-page/HomePage';
 import KrolikPage from './pages/krolik-page/KrolikPage';
-import HistoryPage from './pages/history-page';
+import HistoryPage from './pages/history-page/HistoryPage';
 import './global.css';
 import OfferPage from "./pages/offer-page/OfferPage";
 
