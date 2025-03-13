@@ -10,7 +10,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 1s;
     transform-style: preserve-3d;
 }
 
@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100px; /* Dostosowane do nowej wysokości */
+    border-radius: 75px 0px 75px 0px; /* Dostosowane do nowej wysokości */
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: #007474;

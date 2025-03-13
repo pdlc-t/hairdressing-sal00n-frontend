@@ -34,6 +34,12 @@
   background: #007474;
   color: white;
   box-shadow: 5px 5px 0px 0px #254621;
+  transition: 0.5s;
+}
+
+.cardContainer:hover {
+  transform: translateY(-0.25rem);
+  color: #ba8e23;
 }
 
 .cardContainer .serviceName {
