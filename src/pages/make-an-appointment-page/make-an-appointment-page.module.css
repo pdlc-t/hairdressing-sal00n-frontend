@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  height: 100%;
+  border: 5px red dashed;
+}
+
+.serviceSelectContainer {
+  border: 5px yellow solid;
+  flex: 1;
+}
+
+.calendarContainer {
+  border: 5px blue solid;
+  flex: 1;
+}

@@ -1,0 +1,73 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 5px green dashed;
+  overflow-y: auto;
+}
+
+.headControls {
+  border: 5px black solid;
+  height: 100px;
+}
+
+.daysContainer {
+  border: 5px red solid;
+  flex: 1;
+}
+
+.daysGrid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.dayTileTest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  margin: 5px;
+  background-color: #007474;
+  border: 3px #ffd700 solid;
+  transition: all 2s ease-out;
+  font-size: 30px;
+}
+
+.dayTileTest.blackedout {
+  background-color: #004C4C;
+  color: white;
+  border: 2px white solid;
+}
+
+.dayTileTest.blackedout:hover {
+  transform: none;
+}
+
+.dayTileTest:hover {
+  transform: rotateY(360deg);
+}
+
+.headControlsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.controls {
+  flex: 1;
+}
+
+.weekdays {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: end;
+  justify-items: center;
+}
+
+@media(max-width: 1920px) {
+  .dayTileTest {
+    font-size: 20px;
+  }
+}
