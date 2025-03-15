@@ -6,7 +6,7 @@ const MakeAnAppointmentPage = () => {
   return (
     <div className={`${classes.main}`}>
       <div className={`${classes.serviceSelectContainer}`}>
-
+        
       </div>
       <div className={`${classes.calendarContainer}`}>
         <AppointmentCalendar />
