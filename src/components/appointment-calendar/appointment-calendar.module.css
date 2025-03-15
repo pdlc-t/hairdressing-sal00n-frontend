@@ -26,22 +26,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
-  margin: 5px;
+  border-radius: 10%;
+  margin: 3%;
   background-color: #007474;
   border: 3px #ffd700 solid;
-  transition: all 2s ease-out;
+  transition: all 0.5s ease-out, transform 2s ease-out;
   font-size: 30px;
 }
 
 .dayTileTest.blackedout {
   background-color: #004C4C;
-  color: white;
-  border: 2px white solid;
+  color: #ffffff;
+  border: 3px #ffd700 solid;
 }
 
 .dayTileTest.blackedout:hover {
   transform: none;
+}
+
+.dayTileTest.currentDay {
+  border: 3px #ffffff dashed;
 }
 
 .dayTileTest:hover {
@@ -54,8 +58,37 @@
   height: 100%;
 }
 
-.controls {
+.controlsContainer {
   flex: 1;
+  padding: 5px 20px 5px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chooseDate {
+  font-size: 30px;
+  font-style: bold;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.monthShiftButton {
+  transition: all 0.25s;
+}
+
+.monthShiftButton:hover {
+  color: white;
+  font-style: bold;
+  font-size: 22px;
+}
+
+.monthName {
+  font-size: 30px;
+  font-style: bold;
 }
 
 .weekdays {

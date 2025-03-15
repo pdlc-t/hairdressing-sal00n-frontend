@@ -1,11 +1,24 @@
 import React from 'react'
 import classes from './appointment-calendar.module.css'
 
-const ControlHeader = () => {
+const ControlHeader = ({ firstDayOfActiveMonth, setFirstDayOfActiveMonth }) => {
+  /* Passing the information about active months change up the tree */
+  const changeActiveMonth = (direction) => {
+    setFirstDayOfActiveMonth(current => 
+      direction 
+      ? current.plus({months: 1}).startOf("month") 
+      : current.minus({months: 1}).startOf("month"))
+  }
+
   return (
     <div className={`${classes.headControlsContainer}`}>
-      <div className={`${classes.controls}`}>
-        controls
+      <div className={`${classes.controlsContainer}`}>
+        <p className={`${classes.chooseDate}`}>Choose Date</p>
+        <div className={`${classes.controls}`}>
+          <p className={`${classes.monthShiftButton}`} onClick={() => changeActiveMonth(false)}> &lt;&lt; </p>
+          <p className={`${classes.monthName}`}>{firstDayOfActiveMonth.monthShort}</p>
+          <p className={`${classes.monthShiftButton}`} onClick={() => changeActiveMonth(true)}> &gt;&gt; </p>
+        </div>
       </div>
       <div className={`${classes.weekdays}`}>
         <p>Mon</p>
