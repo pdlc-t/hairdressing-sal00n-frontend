@@ -1,6 +1,14 @@
 .mainContainer {
+  display: flex;
+  flex-direction: column;
   margin-left: 30px;
   padding: 0px 30px 10px 30px;
+}
+
+.mainContainer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .mainContainer h1 {
@@ -10,6 +18,7 @@
 }
 
 .serviceCardContainer {
+  order: 2;
   box-sizing: content-box;
   display: flex;
   justify-content: space-around;
@@ -30,6 +39,11 @@
   transform: translateY(-0.25rem);
   color: #ffd700;
   border: 3px #00ff7f solid;
+}
+
+.serviceCardContainer.highlighted {
+  border: 10px #ffd700 solid;
+  order: 1;
 }
 
 .serviceCardContainer .serviceName {
