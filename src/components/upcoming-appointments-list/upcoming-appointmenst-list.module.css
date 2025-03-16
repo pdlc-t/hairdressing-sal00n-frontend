@@ -32,7 +32,7 @@
   height: 200px;
   border-radius: 50px 0px 50px 0px;
   background: #007474;
-  color: white;
+  color: #ffffff;
   box-shadow: 5px 5px 0px 0px #254621;
   transition: transform 0.5s, color 0.5s;
 }
