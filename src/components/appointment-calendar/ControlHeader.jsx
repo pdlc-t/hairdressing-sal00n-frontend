@@ -13,7 +13,7 @@ const ControlHeader = ({ firstDayOfActiveMonth, setFirstDayOfActiveMonth }) => {
   return (
     <div className={`${classes.headControlsContainer}`}>
       <div className={`${classes.controlsContainer}`}>
-        <p className={`${classes.chooseDate}`}>Choose Date</p>
+        <h1 className={`${classes.chooseDate}`}>Choose Date</h1>
         <div className={`${classes.controls}`}>
           <p className={`${classes.monthShiftButton}`} onClick={() => changeActiveMonth(false)}> &lt;&lt; </p>
           <p className={`${classes.monthName}`}>{firstDayOfActiveMonth.monthShort}</p>

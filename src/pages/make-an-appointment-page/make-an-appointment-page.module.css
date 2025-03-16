@@ -1,15 +1,14 @@
 .main {
   display: flex;
+  gap: 20px;
   height: 100%;
-  border: 5px red dashed;
 }
 
 .serviceSelectContainer {
-  border: 5px yellow solid;
   flex: 1;
+  height: 100%;
 }
 
 .calendarContainer {
-  border: 5px blue solid;
   flex: 1;
 }

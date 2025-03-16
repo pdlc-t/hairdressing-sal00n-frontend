@@ -1,0 +1,41 @@
+.mainContainer {
+  margin-left: 30px;
+  padding: 0px 30px 10px 30px;
+}
+
+.mainContainer h1 {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
+
+.serviceCardContainer {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+  padding-left: 30px;
+  margin: 20px 10px 20px 10px;
+  height: 200px;
+  border-radius: 15px;
+  color: #ffffff;
+  background-color: #007474;
+  box-shadow: 5px 5px 0px 0px #254621;
+  transition: transform 0.5s, color 0.5s;
+  /* border: 5px cyan solid; */
+}
+
+.serviceCardContainer:hover{
+  transform: translateY(-0.25rem);
+  color: #ffd700;
+  border: 3px #00ff7f solid;
+}
+
+.serviceCardContainer .serviceName {
+  font-size: 25px;
+}
+
+.serviceCardContainer .serviceIcon {
+  height: 80%;
+}
