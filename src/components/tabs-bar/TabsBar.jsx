@@ -8,7 +8,7 @@ const TabsBar = () => {
   return (
     <div className={`${classes.container}`}>
       <header className={`${classes.heading}`}>
-        <h1>Fryzjerski Sal00n</h1>
+        <h1>Fryzjerska Sal00na</h1>
       </header>
       <section className={`${classes.tabs}`}>
 
