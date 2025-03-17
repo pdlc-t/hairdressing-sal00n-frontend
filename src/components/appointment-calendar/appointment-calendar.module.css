@@ -47,7 +47,7 @@
 }
 
 .dayTile.currentDay {
-  border: 3px #ffffff dashed;
+  border: 3px #00ffff dashed;
 }
 
 .dayTile:hover {
@@ -84,7 +84,7 @@
 }
 
 .monthShiftButton:hover {
-  color: white;
+  color: #00ff7f;
   font-style: bold;
   font-size: 22px;
 }
