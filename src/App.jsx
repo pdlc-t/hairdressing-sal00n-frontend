@@ -18,15 +18,9 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<InnerLayout />}>
         <Route path="home" element={<HomePage />} />
-<<<<<<< HEAD
-        <Route path="make an appointment" element={<HomePage />} />
+        <Route path="make an appointment" element={<MakeAnAppointmentPage />} />
         <Route path="visits history" element={<HistoryPage />} />
         <Route path="browse the offer" element={<OfferPage />} />
-=======
-        <Route path="make an appointment" element={<MakeAnAppointmentPage />} />
-        <Route path="visits history" element={<HomePage />} />
-        <Route path="browse the offer" element={<HomePage />} />
->>>>>>> 617be06 (Added MakeAnAppointmentPage and calendar grid with spinning days.)
         <Route path="królik" element={<KrolikPage />} />
       </Route>
     )
