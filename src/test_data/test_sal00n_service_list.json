@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Strzyżenie 1",
+    "cost": "40PLN",
+    "description": "nożyczki i te sprawy",
+    "duration": "1H"
+  },
+  {
+    "name": "Strzyżenie 2",
+    "cost": "41PLN",
+    "description": "nożyczki i te sprawy",
+    "duration": "1.6H"
+  },
+  {
+    "name": "Strzyżenie 3",
+    "cost": "42PLN",
+    "description": "nożyczki i te sprawy",
+    "duration": "0.3H"
+  },
+  {
+    "name": "Strzyżenie 4",
+    "cost": "43PLN",
+    "description": "nożyczki i te sprawy",
+    "duration": "0.2H"
+  },
+  {
+    "name": "Strzyżenie 5",
+    "cost": "44PLN",
+    "description": "nożyczki i te sprawy",
+    "duration": "1.5H"
+  }
+]

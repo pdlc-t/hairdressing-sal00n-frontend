@@ -5,6 +5,7 @@
   overflow-y: auto;
   margin-top: 15px;
   margin-right: 15px;
+  overflow: visible;
 }
 
 .headControls {
@@ -19,9 +20,10 @@
   height: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  padding-bottom: 20px;
 }
 
-.dayTileTest {
+.dayTile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,26 +31,28 @@
   margin: 3%;
   background-color: #007474;
   border: 3px #ffd700 solid;
-  transition: all 0.5s ease-out, transform 2s ease-out;
+  transition: background-color 0.5s ease-out, transform 2s ease-out;
   font-size: 30px;
 }
 
-.dayTileTest.blackedout {
+.dayTile.blackedout {
   background-color: #004C4C;
   color: #ffffff;
   border: 3px #ffd700 solid;
 }
 
-.dayTileTest.blackedout:hover {
+.dayTile.blackedout:hover {
   transform: none;
+  border: 3px #ffd700 solid;
 }
 
-.dayTileTest.currentDay {
+.dayTile.currentDay {
   border: 3px #ffffff dashed;
 }
 
-.dayTileTest:hover {
+.dayTile:hover {
   transform: rotateY(360deg);
+  border: 3px #00ff7f solid;
 }
 
 .headControlsContainer {

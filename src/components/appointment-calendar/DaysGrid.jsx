@@ -1,4 +1,5 @@
 import React from 'react'
+import CalendarDayTile from './CalendarDayTile'
 import classes from './appointment-calendar.module.css'
 import { DateTime, Interval } from 'luxon'
 
@@ -10,15 +11,16 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
     firstDayOfActiveMonth.startOf("week"),
     firstDayOfActiveMonth.endOf("month").endOf("week")
   ).splitBy({day: 1}).map(day => day.start);
-  console.log(daysOfMonth);
 
   return (
     <div className={`${classes.daysGrid}`}>
       {daysOfMonth.map((day, dayIndex) => (
-        <div key={dayIndex} className={`
-          ${classes.dayTileTest} 
-          ${(day.month !== firstDayOfActiveMonth.month) ? classes.blackedout : ''}
-          ${(day.day === today.day && day.month === today.month && day.year === today.year) ? classes.currentDay : ''}`}>{day.day}</div>
+        <CalendarDayTile 
+          key={dayIndex} 
+          day={day.day}
+          isFromActiveMonth={day.month === firstDayOfActiveMonth.month}
+          isToday={day.day === today.day && day.month === today.month && day.year === today.year} 
+        />
       ))}
     </div>
   )
