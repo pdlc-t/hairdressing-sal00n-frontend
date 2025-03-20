@@ -7,7 +7,7 @@ import services from '../../test_data/servicesOffered.json';
 import styles from './sal00n-item-grid-container.module.css';
 
 const Sal00nItemGrid = () => {
-    const [view, setView] = useState('products');
+    const [view, setView] = useState('services');
 
     return (
         <div className={styles.gridContainer}>

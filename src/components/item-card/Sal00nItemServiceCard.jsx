@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './sal00n-item-card.module.css';
+import ReserveButton from "../button-card/ReserveButton";
 
 const Sal00nItemServiceCard = ({ item }) => {
     const [flipped, setFlipped] = useState(false);
@@ -24,6 +25,7 @@ const Sal00nItemServiceCard = ({ item }) => {
                             <p>Cena: {item.price} zł</p>
                             <p>Czas trwania: {item.time} min.</p>
                             <p>Dostępność: {item.availability}</p>
+                            <ReserveButton/>
                         </div>
                     </div>
 
