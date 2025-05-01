@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "Anna",
+    "lastName": "Kowalska",
+    "specialties": ["strzyżenie męskie", "strzyżenie damskie", "farbowanie"],
+    "rating": 5
+  },
+  {
+    "firstName": "Amelia",
+    "lastName": "Brogowicz",
+    "specialties": ["strzyżenie męskie", "manicure"],
+    "rating": 5
+  },
+  {
+    "firstName": "Ewa",
+    "lastName": "Wiśniewska",
+    "specialties": ["strzyżenie damskie", "farbowanie", "manicure"],
+    "rating": 3
+  },
+  {
+    "firstName": "Tomasz",
+    "lastName": "Zieliński",
+    "specialties": ["strzyżenie męskie", "strzyżenie damskie"],
+    "rating": 4
+  },
+  {
+    "firstName": "Katarzyna",
+    "lastName": "Lewandowska",
+    "specialties": ["farbowanie", "manicure"],
+    "rating": 5
+  }
+]

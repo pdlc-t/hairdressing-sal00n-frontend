@@ -1,0 +1,46 @@
+.cardContainer {
+    background: #007474;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 16px;
+    text-align: center;
+    color: white;
+    transition: transform 0.5s, border 0.5s;
+}
+.cardContainer:hover {
+    transform: translateY(-0.25rem);
+    color: #ffd700;
+    border: 3px #00ff7f solid;
+}
+.name {
+    color: #ffd700;
+}
+.specialtiesList {
+    list-style-type: disc;
+    padding-left: 32px;
+    text-align: left;
+    margin: 8px 0;
+    color: white; /* ensure list text stays white */
+}
+/* Prevent hover from changing list item color */
+.cardContainer:hover .specialtiesList,
+.cardContainer:hover .specialtiesList li {
+    color: white;
+}
+.starsContainer {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+}
+.star {
+    font-size: 1.5rem;
+    margin: 0 2px;
+    color: white;
+}
+.filled {
+    color: #f5a623;
+}
+.ratingText {
+    margin-top: 8px;
+    color: white;
+}

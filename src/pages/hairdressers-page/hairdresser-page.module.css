@@ -1,24 +1,20 @@
 .container {
-    padding: 24px;
     max-width: 1200px;
     margin: 0 auto;
-}
-.salonGrid {
-    display: flex;
-    flex-direction: column;
-}
-.title {
-    text-align: center;
-    margin-bottom: 16px;
+    padding: 24px;
 }
 .toolbar {
     display: flex;
-    justify-content: space-between; /* Rozstaw skrajnie lewo i prawo */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    width: 100%;
 }
-.hairdresserBtn {
+.title {
+    text-align: center;
+    color: #ffd700;
+    margin: 0;
+}
+.offerBtn {
     padding: 8px 16px;
     background-color: #007bff;
     color: #fff;
@@ -27,6 +23,6 @@
     font-weight: bold;
     transition: background-color 0.2s;
 }
-.hairdresserBtn:hover {
+.offerBtn:hover {
     background-color: #0056b3;
 }

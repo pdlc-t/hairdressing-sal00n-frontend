@@ -1,11 +1,24 @@
+/* sal00n-item-card.module.css */
+
+/* Container for the flipping card with hover animation */
 .cardContainer {
     perspective: 1000px;
-    width: 450px; /* Zwiększona szerokość */
-    height: 200px; /* Zwiększona wysokość */
+    width: 450px;        /* możesz dostosować szerokość */
+    height: 200px;       /* możesz dostosować wysokość */
     margin: 15px;
     cursor: pointer;
+    border-radius: 75px 0 75px 0; /* owalny kształt karty */
+    transition: transform 0.5s, border 0.5s;  /* animacja hover */
 }
 
+/* Hover: uniesienie i zielone obramowanie w owalnym kształcie */
+.cardContainer:hover {
+    transform: translateY(-0.25rem);
+    border: 3px #00ff7f solid;
+    border-radius: 75px 0 75px 0; /* zachowanie owalnego kształtu */
+}
+
+/* Flip animation */
 .flipCard {
     position: relative;
     width: 100%;
@@ -13,11 +26,11 @@
     transition: transform 1s;
     transform-style: preserve-3d;
 }
-
 .flipped .flipCard {
     transform: rotateY(180deg);
 }
 
+/* Inner wrapper preserving 3D context */
 .flipCardInner {
     width: 100%;
     height: 100%;
@@ -25,6 +38,7 @@
     transform-style: preserve-3d;
 }
 
+/* Front and back faces of the card */
 .flipCardFront,
 .flipCardBack {
     position: absolute;
@@ -34,18 +48,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 75px 0px 75px 0px; /* Dostosowane do nowej wysokości */
+    border-radius: 75px 0 75px 0; /* dopasowane do karty */
     padding: 25px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: #007474;
     color: white;
 }
 
+/* Back face rotated */
 .flipCardBack {
     transform: rotateY(180deg);
     padding: 30px;
 }
 
+/* Content layout inside card */
 .cardContent {
     text-align: center;
     width: 100%;
@@ -57,29 +73,30 @@
     gap: 8px;
 }
 
+/* Headings and text styling */
 .cardContent h3 {
     margin: 0;
-    font-size: clamp(1rem, 3vw, 1.5rem); /* Większe czcionki */
+    font-size: clamp(1rem, 3vw, 1.5rem);
     line-height: 1.2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: gold;
 }
-
 .cardContent p {
     margin: 0;
-    font-size: clamp(1rem, 3vw, 1.2rem); /* Większe czcionki */
+    font-size: clamp(1rem, 3vw, 1.2rem);
     line-height: 1.3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: gold
+    color: gold;
 }
 
+/* Back-face text adjustments */
 .flipCardBack .cardContent p {
     white-space: normal;
     overflow: auto;
     text-overflow: clip;
-    max-height: 150px; /* Zwiększona wysokość dla opisu */
+    max-height: 150px;
 }
