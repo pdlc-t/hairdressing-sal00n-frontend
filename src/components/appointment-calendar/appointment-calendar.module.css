@@ -31,12 +31,17 @@
   margin: 3%;
   background-color: #007474;
   border: 3px #ffd700 solid;
-  transition: background-color 0.5s ease-out, transform 2s ease-out;
+  /* Maybe the box shadow is not good, maybe delete it */
+  /* box-shadow: -3px 3px #007474; */
+  box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
+  transition: 0.5s ease-out;
   font-size: 30px;
 }
 
 .dayTile.blackedout {
   background-color: #004C4C;
+  /* Maybe the box shadow is not good, maybe delete it */
+  /* box-shadow: -3px 3px #004C4C; */
   color: #ffffff;
   border: 3px #ffd700 solid;
 }
@@ -50,8 +55,13 @@
   border: 3px #00ffff dashed;
 }
 
+.dayTile.currentDay:hover {
+  border: 3px #00ff7f dashed;
+}
+
 .dayTile:hover {
-  transform: rotateY(360deg);
+  transform: translateY(-0.25rem) translateX(0.25rem);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 74, .25);
   border: 3px #00ff7f solid;
 }
 

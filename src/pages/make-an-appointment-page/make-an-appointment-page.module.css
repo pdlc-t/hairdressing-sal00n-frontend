@@ -12,3 +12,93 @@
 .calendarContainer {
   flex: 1;
 }
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(221,160,221, 0.5);
+}
+
+.appointmentPopup {
+  position: fixed;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+
+  background-color: #009090;
+  color: #000000;
+  border: 5px #00ff7f solid;
+  border-radius: 50px 0px 0px 0px;;
+
+  overflow: clip;
+  height: 90%;
+  width: 40%;
+}
+
+.appointmentPopupContent {
+  padding: 15px;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.popupHeader {
+  color: #000000;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popupHeader .closeButton {
+  background: #004C4C;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: default;
+}
+
+.popupHeader .closeButton:hover {
+  background: #ff5050;
+}
+
+.timeSlotCard {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffd700;
+  background: #004C4C;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
+
+  transition: 500ms;
+}
+
+.timeSlotCard:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 74, .25);
+}
+
+.timeSlotCard .choiceButton {
+  margin: 5% 0%;
+  padding: 10px;
+  border-radius: 10px;
+  background: #009090;
+  color: #ffd700;
+  transition: 250ms;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
+}
+
+.timeSlotCard .choiceButton:hover {
+  color: #ffffff;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 74, .25);
+  transform: translateY(-0.25rem);
+}

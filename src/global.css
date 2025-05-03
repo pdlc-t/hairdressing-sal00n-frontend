@@ -12,4 +12,6 @@ body {
   line-height: 1.5;
   color: #ffd700;
   background-color: #18453b;
+  cursor: default;
+  user-select: none;
 }

@@ -2,14 +2,21 @@ import React, { useState, createContext } from 'react'
 import classes from './make-an-appointment-page.module.css'
 import AppointmentCalendar from '../../components/appointment-calendar/AppointmentCalendar'
 import ServicesList from '../../components/services-list/ServicesList'
+import AppointmentPopup from './AppointmentPopup'
 
-export const ServiceChoiceContext = createContext();
+export const MakingAppointmentContext = createContext();
 
 const MakeAnAppointmentPage = () => {
-  const [highlightedService, setHighlightedService] = useState();
+  const [highlightedService, setHighlightedService] = useState(undefined);
+  const [isAppointmentPopup, setAppointmentPopup] = useState(false)
+
+  const toggleAppointmentPopup = () => {
+    setAppointmentPopup(!isAppointmentPopup);
+  }
 
   return (
-    <ServiceChoiceContext.Provider value={{ highlightedService, setHighlightedService }}>
+    <MakingAppointmentContext.Provider value={{ highlightedService, setHighlightedService, toggleAppointmentPopup }}>
+      {isAppointmentPopup ? <AppointmentPopup /> : null}
       <div className={`${classes.main}`}>
         <div className={`${classes.serviceSelectContainer}`}>
           <ServicesList />
@@ -18,7 +25,7 @@ const MakeAnAppointmentPage = () => {
           <AppointmentCalendar />
         </div>
       </div>
-    </ServiceChoiceContext.Provider>
+    </MakingAppointmentContext.Provider>
   )
 }
 

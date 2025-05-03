@@ -4,7 +4,6 @@ import classes from './appointment-calendar.module.css'
 import { DateTime, Interval } from 'luxon'
 
 const DaysGrid = ({ firstDayOfActiveMonth }) => {
-  /* TODO: implement highlighting today */
   const today = DateTime.local();
   // const firstDayOfActiveMonth = today.startOf("month");
   const daysOfMonth = Interval.fromDateTimes(
