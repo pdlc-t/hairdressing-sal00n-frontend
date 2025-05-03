@@ -32,14 +32,15 @@
   height: 200px;
   border-radius: 50px 0px 50px 0px;
   background: #007474;
-  color: white;
+  color: #ffffff;
   box-shadow: 5px 5px 0px 0px #254621;
-  transition: 0.5s;
+  transition: transform 0.5s, color 0.5s;
 }
 
 .cardContainer:hover {
   transform: translateY(-0.25rem);
-  color: #ba8e23;
+  color: #ffd700;
+  border: 3px #00ff7f solid;
 }
 
 .cardContainer .serviceName {
