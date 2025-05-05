@@ -29,13 +29,30 @@
   align-items: center;
   border-radius: 5%;
   margin: 3%;
-  background-color: #007474;
+  /* background-color: #007474; */
   border: 3px #ffd700 solid;
   /* Maybe the box shadow is not good, maybe delete it */
   /* box-shadow: -3px 3px #007474; */
   box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
   transition: 0.5s ease-out;
   font-size: 30px;
+}
+
+.dayTile.green:not(.blackedout) {
+  background-color: #007474;
+}
+
+.dayTile.orange:not(.blackedout) {
+  background-color: #ea8705;
+}
+
+.dayTile.red:not(.blackedout) {
+  background-color: #ea0505;
+}
+
+.dayTile.red:not(.blackedout):hover {
+  transform: none;
+  border: 3px #ffd700 solid;
 }
 
 .dayTile.blackedout {
