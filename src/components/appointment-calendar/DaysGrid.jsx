@@ -8,6 +8,7 @@ import { DateTime, Interval } from 'luxon'
 
 const DaysGrid = ({ firstDayOfActiveMonth }) => {
   const [appointmentsData, setAppointmentsData] = useState([]);
+  const [fetchingError, setFetchingError] = useState();
   const today = DateTime.local();
   // const firstDayOfActiveMonth = today.startOf("month");
   const daysOfMonth = Interval.fromDateTimes(
@@ -17,10 +18,15 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const response = await fetch('http://127.0.0.1:5000/appointments/get-appointments');
-      const data = await response.json();
+      try {
+        const response = await fetch('http://127.0.0.1:5000/appointments/get-appointments');
+        const data = await response.json();
 
-      setAppointmentsData(data);
+        setAppointmentsData(data);
+      } catch (e) {
+        console.log("error while fetching appointments: " + e)
+        setFetchingError("An error occured when trying to fetch data from the server :(")
+      }
     }
 
     fetchAppointments();
@@ -51,7 +57,9 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
     }
   }
 
+  if (fetchingError) return <h1>{fetchingError}</h1>
   if (!appointmentsData.length) return <h1>Fetching days...</h1>
+  
 
   return (
     <div className={`${classes.daysGrid}`}>
