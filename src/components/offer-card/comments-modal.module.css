@@ -1,0 +1,50 @@
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal {
+    background: #007474;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    padding: 16px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.closeBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Zamiast zielonego hover, tło czerwone */
+.closeBtn:hover {
+    background-color: red;
+    color: white; /* opcjonalnie: biały krzyżyk na czerwonym tle */
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+.list li {
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+.list li:last-child {
+    border: none;
+}
+.error {
+    color: red;
+}

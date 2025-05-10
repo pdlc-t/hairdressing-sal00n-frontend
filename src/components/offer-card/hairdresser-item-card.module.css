@@ -6,6 +6,7 @@
     text-align: center;
     color: white;
     transition: transform 0.5s, border 0.5s;
+    cursor: pointer;
 }
 .cardContainer:hover {
     transform: translateY(-0.25rem);
