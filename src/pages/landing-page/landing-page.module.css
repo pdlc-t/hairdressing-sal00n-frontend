@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #18453b;
+    color: #ffd700;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .button {
+    padding: 15px 30px;
+    background-color: #007474;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #005f5f;
+  }
+  
+  .registerText {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ffd700;
+  }
+  
+  .registerLink {
+    color: #007474;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .registerLink:hover {
+    color: #005f5f;
+  }
