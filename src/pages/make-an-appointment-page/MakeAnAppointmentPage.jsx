@@ -8,14 +8,18 @@ export const MakingAppointmentContext = createContext();
 
 const MakeAnAppointmentPage = () => {
   const [highlightedService, setHighlightedService] = useState(undefined);
-  const [isAppointmentPopup, setAppointmentPopup] = useState(false)
+  const [isAppointmentPopup, setAppointmentPopup] = useState(false);
+  const [dateChoice, setDateChoice] = useState(undefined);
 
   const toggleAppointmentPopup = () => {
     setAppointmentPopup(!isAppointmentPopup);
   }
 
   return (
-    <MakingAppointmentContext.Provider value={{ highlightedService, setHighlightedService, toggleAppointmentPopup }}>
+    <MakingAppointmentContext.Provider value={{ 
+      highlightedService, setHighlightedService, toggleAppointmentPopup, 
+      dateChoice, setDateChoice
+    }}>
       {isAppointmentPopup ? <AppointmentPopup /> : null}
       <div className={`${classes.main}`}>
         <div className={`${classes.serviceSelectContainer}`}>

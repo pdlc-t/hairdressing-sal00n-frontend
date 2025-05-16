@@ -10,7 +10,7 @@ const ServiceCard = ({ service }) => {
     <div className={`${classes.serviceCardContainer} 
       ${highlightedService === service ? classes.highlighted : ''}`}
       onClick={() => setHighlightedService(prev => service === prev ? null : service)}>
-      <p className={`${classes.serviceName}`}>{service.name}</p>
+      <p className={`${classes.serviceName}`}>{service.serviceName}</p>
       <img src={scissors} alt="service icon" className={`${classes.serviceIcon}`}/>
     </div>
   )

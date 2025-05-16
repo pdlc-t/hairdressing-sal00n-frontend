@@ -16,7 +16,7 @@ const ControlHeader = ({ firstDayOfActiveMonth, setFirstDayOfActiveMonth }) => {
         <h1 className={`${classes.chooseDate}`}>Choose Date</h1>
         <div className={`${classes.controls}`}>
           <p className={`${classes.monthShiftButton}`} onClick={() => changeActiveMonth(false)}> &lt;&lt; </p>
-          <p className={`${classes.monthName}`}>{firstDayOfActiveMonth.monthShort}</p>
+          <p className={`${classes.monthName}`}>{firstDayOfActiveMonth.monthShort}   {firstDayOfActiveMonth.year}</p>
           <p className={`${classes.monthShiftButton}`} onClick={() => changeActiveMonth(true)}> &gt;&gt; </p>
         </div>
       </div>

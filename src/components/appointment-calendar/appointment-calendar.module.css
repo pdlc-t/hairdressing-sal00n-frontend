@@ -8,10 +8,6 @@
   overflow: visible;
 }
 
-.headControls {
-  height: 100px;
-}
-
 .daysContainer {
   flex: 1;
 }
@@ -85,7 +81,6 @@
 .headControlsContainer {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .controlsContainer {
@@ -93,27 +88,32 @@
   padding: 5px 20px 5px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .controls {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 0px;
 }
 
-.controls h1 {
+.chooseDate {
+  margin: 0px;
+}
+
+.controls p {
   font-size: 30px;
-  margin: 20px;
+  margin: 0px;
 }
 
 .monthShiftButton {
-  transition: all 0.25s;
+  transition: all 0.5s;
 }
 
 .monthShiftButton:hover {
   color: #00ff7f;
   font-style: bold;
-  font-size: 22px;
 }
 
 .monthName {

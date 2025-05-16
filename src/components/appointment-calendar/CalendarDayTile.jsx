@@ -2,11 +2,17 @@ import React, { useContext } from 'react'
 import classes from './appointment-calendar.module.css'
 import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage';
 
-const CalendarDayTile = ({ day, isFromActiveMonth, isToday, availability }) => {
+const CalendarDayTile = ({ date, isFromActiveMonth, isToday, availability }) => {
   
-  const { toggleAppointmentPopup } = useContext(MakingAppointmentContext);
+  const { toggleAppointmentPopup, setDateChoice } = useContext(MakingAppointmentContext);
 
   const availabilityClass = classes[availability] || '';
+
+  const handleClick = () => {
+    console.log(date);
+    setDateChoice(date);
+    toggleAppointmentPopup();
+  }
 
   return (
     <div className={`
@@ -15,8 +21,8 @@ const CalendarDayTile = ({ day, isFromActiveMonth, isToday, availability }) => {
       ${isToday ? classes.currentDay : ''}
       ${availabilityClass}
     `}
-    onClick={isFromActiveMonth && availability !== "red" ? toggleAppointmentPopup : undefined}>
-      {day}
+    onClick={isFromActiveMonth && availability !== "red" ? handleClick : undefined}>
+      {date.day}
     </div>
   )
 }

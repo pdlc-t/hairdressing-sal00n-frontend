@@ -56,6 +56,10 @@
   align-items: center;
 }
 
+.popupHeader h1 {
+  margin: 0px;
+}
+
 .popupHeader .closeButton {
   background: #ffd700;
   position: absolute;
@@ -83,6 +87,10 @@
   transition: 500ms;
 }
 
+.timeSlotCard h1 {
+  margin: 0px;
+}
+
 .timeSlotCard:hover {
   transform: translateY(-0.25rem);
   box-shadow: 0 2px 10px 0 rgba(0, 0, 74, .25);
@@ -96,6 +104,7 @@
   color: #ffd700;
   transition: transform 250ms, box-shadow 250ms, color 250ms;
   box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
+  border: 3px solid transparent;
 }
 
 .timeSlotCard .choiceButton:hover {
@@ -103,4 +112,15 @@
   box-shadow: 0 2px 10px 0 rgba(0, 0, 74, .25);
   transform: translateY(-0.25rem);
   border: 3px #00ff7f solid;
+}
+
+.timeSlotCard .choiceButton.inactive {
+  background-color: gray;
+}
+
+.timeSlotCard .choiceButton.inactive:hover {
+  transform: none;
+  border: 3px solid transparent;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 74, .5);
+  color: #ffd700;
 }

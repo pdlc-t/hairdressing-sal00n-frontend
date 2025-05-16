@@ -33,26 +33,20 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
   }, [])
 
   useEffect(() => {
-    console.log(appointmentsData);
   }, [appointmentsData])
 
   const determineAvailability = (day) => {
     const matchingAppointments = appointmentsData.filter((appointment) => {
       const appointmentDate = DateTime.fromISO(appointment.date).startOf('day');
-      console.log(appointmentDate);
       const targetDay = day.startOf('day');
 
       return appointmentDate.hasSame(targetDay, 'day');
     })
-    console.log(matchingAppointments.length)
     if (matchingAppointments.length < 2) {
-      console.log("green")
       return "green";
     } else if (matchingAppointments.length <= 4) {
-      console.log("orange")
       return "orange";
     } else {
-      console.log("red")
       return "red"
     }
   }
@@ -66,7 +60,7 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
       {daysOfMonth.map((day, dayIndex) => (
         <CalendarDayTile
           key={dayIndex}
-          day={day.day}
+          date={day}
           isFromActiveMonth={day.month === firstDayOfActiveMonth.month}
           isToday={day.day === today.day && day.month === today.month && day.year === today.year}
           availability={determineAvailability(day)}
