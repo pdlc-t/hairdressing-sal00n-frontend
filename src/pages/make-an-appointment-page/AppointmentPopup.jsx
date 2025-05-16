@@ -42,6 +42,11 @@ const AppointmentPopup = () => {
     return slotsActivityData[number];
   }
 
+  if (!highlightedService) {
+    toggleAppointmentPopup();
+    return;
+  }
+
   return createPortal(
     <>
       <div className={`${classes.popupOverlay}`} onClick={toggleAppointmentPopup} />

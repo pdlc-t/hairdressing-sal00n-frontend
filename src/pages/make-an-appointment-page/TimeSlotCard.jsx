@@ -4,7 +4,7 @@ import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/M
 
 const TimeSlotCard = ({ number, isActive }) => {
 
-  const { dateChoice, highlightedService, toggleAppointmentPopup } = useContext(MakingAppointmentContext);
+  const { dateChoice, highlightedService, toggleAppointmentPopup, refreshAppointments } = useContext(MakingAppointmentContext);
 
   const handleChoiceButtonClick = async () => {
     // TODO: post an appointment on click with a correct slot number and all
@@ -39,10 +39,10 @@ const TimeSlotCard = ({ number, isActive }) => {
       } catch (e) {
         console.log(`An error occured: ${e}`);
       }
-      
     }
     toggleAppointmentPopup();
-    postAppointment();
+    await postAppointment();
+    refreshAppointments();
   }
 
   const printTimeSlot = () => {

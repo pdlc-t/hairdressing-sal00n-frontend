@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import CalendarDayTile from './CalendarDayTile'
 import classes from './appointment-calendar.module.css'
 import { DateTime, Interval } from 'luxon'
+import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage'
 //import appointmentsData from '../../test_data/example_appointments.json';
 
 // TODO: unplug test json file with appointments and fetch data from backend (uncomment necessary lines)
 
 const DaysGrid = ({ firstDayOfActiveMonth }) => {
-  const [appointmentsData, setAppointmentsData] = useState([]);
-  const [fetchingError, setFetchingError] = useState();
+  // const [appointmentsData, setAppointmentsData] = useState([]);
+  const { appointmentsData, refreshAppointments, appointmentsFetchingError } = useContext(MakingAppointmentContext);
   const today = DateTime.local();
   // const firstDayOfActiveMonth = today.startOf("month");
   const daysOfMonth = Interval.fromDateTimes(
@@ -17,23 +18,8 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
   ).splitBy({ day: 1 }).map(day => day.start);
 
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/appointments/get-appointments');
-        const data = await response.json();
-
-        setAppointmentsData(data);
-      } catch (e) {
-        console.log("error while fetching appointments: " + e)
-        setFetchingError("An error occured when trying to fetch data from the server :(")
-      }
-    }
-
-    fetchAppointments();
-  }, [])
-
-  useEffect(() => {
-  }, [appointmentsData])
+    refreshAppointments();
+  }, []);
 
   const determineAvailability = (day) => {
     const matchingAppointments = appointmentsData.filter((appointment) => {
@@ -51,7 +37,7 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
     }
   }
 
-  if (fetchingError) return <h1>{fetchingError}</h1>
+  if (appointmentsFetchingError) return <h1>{appointmentsFetchingError}</h1>
   if (!appointmentsData.length) return <h1>Fetching days...</h1>
   
 

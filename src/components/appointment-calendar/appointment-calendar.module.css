@@ -51,6 +51,10 @@
   border: 3px #ffd700 solid;
 }
 
+.dayTile.currentDay.red:not(.blackedout):hover {
+  border: 3px #00ffff dashed;
+}
+
 .dayTile.blackedout {
   background-color: #004C4C;
   /* Maybe the box shadow is not good, maybe delete it */
