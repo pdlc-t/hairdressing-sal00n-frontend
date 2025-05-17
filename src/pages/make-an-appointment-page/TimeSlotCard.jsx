@@ -1,76 +1,91 @@
-import React, { useContext } from 'react';
-import classes from './make-an-appointment-page.module.css';
-import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage';
+import React, { useContext } from 'react'
+import classes from './make-an-appointment-page.module.css'
+import { MakingAppointmentContext } from './MakeAnAppointmentPage'
+
+const API_URL = process.env.REACT_APP_API_URL
 
 const TimeSlotCard = ({ number, isActive }) => {
+    const {
+        dateChoice,
+        highlightedService,
+        toggleAppointmentPopup,
+        refreshAppointments
+    } = useContext(MakingAppointmentContext)
 
-  const { dateChoice, highlightedService, toggleAppointmentPopup, refreshAppointments } = useContext(MakingAppointmentContext);
-
-  const handleChoiceButtonClick = async () => {
-    // TODO: post an appointment on click with a correct slot number and all
-    const postAppointment = async () => {
-      const dateString = dateChoice.toISO({
-        includeOffset: false,
-        suppressMilliseconds: true
-      });
-
-      try {
-        const response = await fetch('http://127.0.0.1:5000/appointments/add-appointment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-          },
-          body: JSON.stringify({
-            service_id: highlightedService.id,
-            date: dateString,
-            time_slot: number
-          })
-        }
-        )
-        const result = await response.json();
-        if (!response.ok) {
-          console.log('Error posting the appointment');
-          return;
+    const handleChoiceButtonClick = async () => {
+        const token = localStorage.getItem('authToken')
+        if (!token) {
+            console.error('No auth token found')
+            return
         }
 
-        console.log('Appointment booked successfully');
-        return result;
-      } catch (e) {
-        console.log(`An error occured: ${e}`);
-      }
-    }
-    toggleAppointmentPopup();
-    await postAppointment();
-    refreshAppointments();
-  }
+        const dateString = dateChoice.toISO({
+            includeOffset: false,
+            suppressMilliseconds: true
+        })
 
-  const printTimeSlot = () => {
-    switch (number) {
-      case 1:
-        return <h1>8:00 - 10:00</h1>
-      case 2:
-        return <h1>10:00 - 12:00</h1>
-      case 3:
-        return <h1>12:00 - 14:00</h1>
-      case 4:
-        return <h1>14:00 - 16:00</h1>
-      case 5:
-        return <h1>16:00 - 18:00</h1>
-      default:
-        return null;
-    }
-  }
+        try {
+            const response = await fetch(
+                `${API_URL}/appointments/add-appointment`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        service_id: highlightedService.id,
+                        date: dateString,
+                        time_slot: number
+                    })
+                }
+            )
 
-  return (
-    <div className={`${classes.timeSlotCard}`}>
-      {printTimeSlot()}
-      <h1
-        className={`${classes.choiceButton} ${isActive ? null : classes.inactive}`}
-        onClick={isActive ? handleChoiceButtonClick : undefined}
-      >choose</h1>
-    </div>
-  )
+            const result = await response.json()
+            if (!response.ok) {
+                console.error('Error posting the appointment:', result)
+                return
+            }
+
+            console.log('Appointment booked successfully')
+            // Dopiero po udanym POST:
+            toggleAppointmentPopup()
+            refreshAppointments()
+            return result
+
+        } catch (e) {
+            console.error(`An error occurred: ${e}`)
+        }
+    }
+
+    const printTimeSlot = () => {
+        switch (number) {
+            case 1:
+                return <h1>8:00 - 10:00</h1>
+            case 2:
+                return <h1>10:00 - 12:00</h1>
+            case 3:
+                return <h1>12:00 - 14:00</h1>
+            case 4:
+                return <h1>14:00 - 16:00</h1>
+            case 5:
+                return <h1>16:00 - 18:00</h1>
+            default:
+                return null
+        }
+    }
+
+    return (
+        <div className={classes.timeSlotCard}>
+            {printTimeSlot()}
+            <h1
+                className={`${classes.choiceButton} ${isActive ? '' : classes.inactive}`}
+                onClick={isActive ? handleChoiceButtonClick : undefined}
+            >
+                choose
+            </h1>
+        </div>
+    )
 }
 
 export default TimeSlotCard

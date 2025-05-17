@@ -1,59 +1,106 @@
-import React, { useEffect, useState, useContext } from 'react'
+// src/components/appointment-calendar/DaysGrid.jsx
+import React, { useEffect, useState } from 'react'
 import CalendarDayTile from './CalendarDayTile'
 import classes from './appointment-calendar.module.css'
 import { DateTime, Interval } from 'luxon'
-import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage'
-//import appointmentsData from '../../test_data/example_appointments.json';
 
-// TODO: unplug test json file with appointments and fetch data from backend (uncomment necessary lines)
+// Adres API z .env
+const API_URL = process.env.REACT_APP_API_URL
 
 const DaysGrid = ({ firstDayOfActiveMonth }) => {
-  // const [appointmentsData, setAppointmentsData] = useState([]);
-  const { appointmentsData, refreshAppointments, appointmentsFetchingError } = useContext(MakingAppointmentContext);
-  const today = DateTime.local();
-  // const firstDayOfActiveMonth = today.startOf("month");
-  const daysOfMonth = Interval.fromDateTimes(
-    firstDayOfActiveMonth.startOf("week"),
-    firstDayOfActiveMonth.endOf("month").endOf("week")
-  ).splitBy({ day: 1 }).map(day => day.start);
+    const [appointments, setAppointments] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
-  useEffect(() => {
-    refreshAppointments();
-  }, []);
+    const today = DateTime.local()
 
-  const determineAvailability = (day) => {
-    const matchingAppointments = appointmentsData.filter((appointment) => {
-      const appointmentDate = DateTime.fromISO(appointment.date).startOf('day');
-      const targetDay = day.startOf('day');
+    // Generujemy zakres dni obejmujący cały widok kalendarza
+    const daysOfMonth = Interval
+        .fromDateTimes(
+            firstDayOfActiveMonth.startOf('week'),
+            firstDayOfActiveMonth.endOf('month').endOf('week')
+        )
+        .splitBy({ day: 1 })
+        .map(interval => interval.start)
 
-      return appointmentDate.hasSame(targetDay, 'day');
-    })
-    if (matchingAppointments.length < 2) {
-      return "green";
-    } else if (matchingAppointments.length <= 4) {
-      return "orange";
-    } else {
-      return "red"
+    useEffect(() => {
+        const fetchAppointments = async () => {
+            setLoading(true)
+            setError(null)
+
+            const token = localStorage.getItem('authToken')
+            if (!token) {
+                setError('Brak tokena autoryzacyjnego')
+                setLoading(false)
+                return
+            }
+
+            try {
+                const res = await fetch(
+                    `${API_URL}/appointments/get-appointments`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    }
+                )
+
+                if (res.status === 401) {
+                    throw new Error('Nieautoryzowany. Zaloguj się ponownie.')
+                }
+                if (!res.ok) {
+                    throw new Error(`Błąd sieci: HTTP ${res.status}`)
+                }
+
+                const data = await res.json()
+                setAppointments(data)
+            } catch (e) {
+                console.error('Error while fetching appointments:', e)
+                setError(e.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchAppointments()
+    }, [firstDayOfActiveMonth])
+
+    const determineAvailability = (day) => {
+        const target = day.startOf('day')
+        const count = appointments.filter(appt => {
+            const apptDay = DateTime.fromISO(appt.date).startOf('day')
+            return apptDay.hasSame(target, 'day')
+        }).length
+
+        if (count < 2) return 'green'
+        if (count <= 4) return 'orange'
+        return 'red'
     }
-  }
 
-  if (appointmentsFetchingError) return <h1>{appointmentsFetchingError}</h1>
-  if (!appointmentsData.length) return <h1>Fetching days...</h1>
-  
+    if (loading) {
+        return <h1>Ładowanie danych o wizytach…</h1>
+    }
+    if (error) {
+        return <h1 className={classes.error}>Błąd: {error}</h1>
+    }
 
-  return (
-    <div className={`${classes.daysGrid}`}>
-      {daysOfMonth.map((day, dayIndex) => (
-        <CalendarDayTile
-          key={dayIndex}
-          date={day}
-          isFromActiveMonth={day.month === firstDayOfActiveMonth.month}
-          isToday={day.day === today.day && day.month === today.month && day.year === today.year}
-          availability={determineAvailability(day)}
-        />
-      ))}
-    </div>
-  )
+    return (
+        <div className={classes.daysGrid}>
+            {daysOfMonth.map((day, idx) => (
+                <CalendarDayTile
+                    key={idx}
+                    date={day}
+                    isFromActiveMonth={day.month === firstDayOfActiveMonth.month}
+                    isToday={
+                        day.day === today.day &&
+                        day.month === today.month &&
+                        day.year === today.year
+                    }
+                    availability={determineAvailability(day)}
+                />
+            ))}
+        </div>
+    )
 }
 
 export default DaysGrid

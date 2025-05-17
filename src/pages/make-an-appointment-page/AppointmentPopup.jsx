@@ -10,6 +10,8 @@ import TimeSlotCard from './TimeSlotCard'
 */
 // import slotsDataTest from '../../test_data/slots_activity_test.json'
 
+const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+
 const AppointmentPopup = () => {
   const { highlightedService, toggleAppointmentPopup, dateChoice } = useContext(MakingAppointmentContext);
   const [slotsActivityData, setSlotsActivityData] = useState();
@@ -25,7 +27,11 @@ const AppointmentPopup = () => {
 
       try {
         const response = await fetch(`http://127.0.0.1:5000/appointments/get-busy-time-slots?date=${encodeURIComponent(dateString)}`, {
-          method: 'GET'
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_TOKEN}`
+          },
         });
         const data = await response.json();
         setSlotsActivityData(data);
