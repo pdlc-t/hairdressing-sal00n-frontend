@@ -4,6 +4,9 @@ import AppointmentCalendar from '../../components/appointment-calendar/Appointme
 import ServicesList from '../../components/services-list/ServicesList'
 import AppointmentPopup from './AppointmentPopup'
 
+const API_URL   = process.env.REACT_APP_API_URL;
+//const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+
 export const MakingAppointmentContext = createContext();
 
 const MakeAnAppointmentPage = () => {
@@ -14,17 +17,28 @@ const MakeAnAppointmentPage = () => {
   const [appointmentsData, setAppointmentsData] = useState([]);
   const [appointmentsFetchingError, setAppointmentsFetchingError] = useState(undefined)
 
+  // MakeAnAppointmentPage.jsx (lub tam, gdzie definiujesz refreshAppointments)
   const refreshAppointments = async () => {
+    const token = localStorage.getItem('authToken')
+    if (!token) {
+      setAppointmentsFetchingError('Brak tokena — zaloguj się')
+      return
+    }
     try {
-        const response = await fetch('http://127.0.0.1:5000/appointments/get-appointments');
-        const data = await response.json();
-
-        setAppointmentsData(data);
-      } catch (e) {
-        console.log("error while fetching appointments: " + e)
-        setAppointmentsFetchingError("An error occured when trying to fetch data from the server :(")
-      }
+      const res = await fetch(
+          `${API_URL}/appointments/get-appointments`,
+          {
+            headers: { 'Authorization': `Bearer ${token}` }
+          }
+      )
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = await res.json()
+      setAppointmentsData(data)
+    } catch (e) {
+      setAppointmentsFetchingError(e.message)
+    }
   }
+
 
 
   const toggleAppointmentPopup = () => {

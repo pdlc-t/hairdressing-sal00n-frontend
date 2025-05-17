@@ -28,7 +28,6 @@ const UpcomingAppointmentsList = () => {
                     }))
                     .filter(a => a.dateObj > now)
                     .sort((a, b) => a.dateObj - b.dateObj)
-                    .slice(0, 5)           // np. maksimum 5 najbliższych
                 setAppointments(upcoming)
             } catch (e) {
                 setError(e.message)
