@@ -17,6 +17,7 @@ import RegisterPage from './pages/register-page/RegisterPage';
 import LandingPage from './pages/landing-page/LandingPage';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import './global.css';
+import {MakingAppointmentProvider} from "./context/MakingAppointmentProvider";
 
 function App() {
   const router = createBrowserRouter(
@@ -48,7 +49,11 @@ function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+    return (
+        <MakingAppointmentProvider>
+            <RouterProvider router={router} />
+        </MakingAppointmentProvider>
+    )
 }
 
 export default App;

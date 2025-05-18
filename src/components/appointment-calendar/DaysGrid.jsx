@@ -3,7 +3,7 @@ import React, { useEffect, useContext } from 'react'
 import CalendarDayTile from './CalendarDayTile'
 import classes from './appointment-calendar.module.css'
 import { DateTime, Interval } from 'luxon'
-import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage'
+import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
 
 const DaysGrid = ({ firstDayOfActiveMonth }) => {
     const {

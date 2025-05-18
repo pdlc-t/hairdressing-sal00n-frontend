@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import classes from './appointment-calendar.module.css'
-import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage';
+import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
 
 const CalendarDayTile = ({ date, isFromActiveMonth, isToday, availability }) => {
   

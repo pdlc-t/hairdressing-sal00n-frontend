@@ -2,7 +2,7 @@
 
 import React, { useContext } from 'react'
 import classes from './make-an-appointment-page.module.css'
-import { MakingAppointmentContext } from './MakeAnAppointmentPage'
+import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
 
 const API_URL = process.env.REACT_APP_API_URL
 

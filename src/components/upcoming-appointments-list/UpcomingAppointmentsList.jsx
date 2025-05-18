@@ -3,31 +3,32 @@ import UpcomingAppointmentCard from './UpcomingAppointmentCard'
 import classes from './upcoming-appointmenst-list.module.css'
 
 const API_URL   = process.env.REACT_APP_API_URL;
-const API_TOKEN = process.env.REACT_APP_API_TOKEN;
 
 const UpcomingAppointmentsList = () => {
     const [appointments, setAppointments] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [loading, setLoading]       = useState(true)
+    const [error, setError]           = useState(null)
 
     useEffect(() => {
         const fetchAppointments = async () => {
+            setLoading(true)
+            setError(null)
             try {
-                const res = await fetch(`${API_URL}/appointments/get-appointments`, {
-                    headers: { 'Authorization': `Bearer ${API_TOKEN}` }
-                });
+                const token = localStorage.getItem('authToken')
+                if (!token) throw new Error('Brak tokena autoryzacyjnego')
+                const res = await fetch(
+                    `${API_URL}/appointments/get-appointments`,
+                    { headers: { 'Authorization': `Bearer ${token}` } }
+                )
                 if (!res.ok) throw new Error(`HTTP ${res.status}`)
                 const data = await res.json()
 
-                // teraz = teraz, odfiltrować tylko przyszłe
                 const now = new Date()
                 const upcoming = data
-                    .map(a => ({
-                        ...a,
-                        dateObj: new Date(a.date)
-                    }))
+                    .map(a => ({ ...a, dateObj: new Date(a.date) }))
                     .filter(a => a.dateObj > now)
-                    .sort((a, b) => a.dateObj - b.dateObj)
+                    .sort((a,b) => a.dateObj - b.dateObj)
+
                 setAppointments(upcoming)
             } catch (e) {
                 setError(e.message)
@@ -39,9 +40,12 @@ const UpcomingAppointmentsList = () => {
         fetchAppointments()
     }, [])
 
+    const handleCancel = (cancelledId) => {
+        setAppointments(prev => prev.filter(a => a.id !== cancelledId))
+    }
+
     if (loading) return <p>Loading upcoming appointments…</p>
     if (error)   return <p className={classes.error}>Error: {error}</p>
-
     if (appointments.length === 0) {
         return <p>No upcoming appointments.</p>
     }
@@ -50,24 +54,24 @@ const UpcomingAppointmentsList = () => {
         <div className={classes.appointmentsList}>
             <h1>Upcoming Appointments</h1>
             <ul>
-                {appointments.map(({ id, service_name, dateObj, time_slot }) => (
-                    <li key={id}>
-                        <UpcomingAppointmentCard
-                            service={service_name}
-                            // sformatować datę, np. "2025-05-20, 14:00"
-                            date={dateObj.toLocaleDateString('pl-PL', {
-                                weekday: 'short',
-                                year: 'numeric',
-                                month: 'numeric',
-                                day: 'numeric'
-                            }) + ', ' + dateObj.toLocaleTimeString('pl-PL', {
-                                hour: '2-digit',
-                                minute: '2-digit'
-                            })}
-                            timeSlot={time_slot}
-                        />
-                    </li>
-                ))}
+                {appointments.map(({ id, service_name, dateObj, time_slot }) => {
+                    const dateStr = dateObj.toLocaleDateString('pl-PL', {
+                        weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric'
+                    })
+                    const timeStr = dateObj.toLocaleTimeString('pl-PL', {
+                        hour: '2-digit', minute: '2-digit'
+                    })
+                    return (
+                        <li key={id}>
+                            <UpcomingAppointmentCard
+                                id={id}
+                                service={service_name}
+                                date={`${dateStr}, ${timeStr}`}
+                                onCancel={handleCancel}
+                            />
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )

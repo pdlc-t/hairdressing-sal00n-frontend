@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import classes from './services-list.module.css'
 import scissors from '../../assets/svg_images/service_icons/scissors.svg'
-import { MakingAppointmentContext } from '../../pages/make-an-appointment-page/MakeAnAppointmentPage'
+import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
 
 const ServiceCard = ({ service }) => {
   const {highlightedService, setHighlightedService} = useContext(MakingAppointmentContext);

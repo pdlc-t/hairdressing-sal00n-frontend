@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import classes from './make-an-appointment-page.module.css'
-import { MakingAppointmentContext } from './MakeAnAppointmentPage'
+import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
 import TimeSlotCard from './TimeSlotCard'
 
 /*
