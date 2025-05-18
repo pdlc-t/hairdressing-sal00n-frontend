@@ -26,7 +26,7 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
     // Przy pierwszym renderze pobieramy wizyty
     useEffect(() => {
         refreshAppointments()
-    }, [refreshAppointments])
+    }, [])
 
     // Funkcja zwracająca kolor wg liczby wizyt w danym dniu
     const determineAvailability = day => {
