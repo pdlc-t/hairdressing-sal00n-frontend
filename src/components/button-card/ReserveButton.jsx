@@ -1,19 +1,20 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// src/components/button-card/ReserveButton.jsx
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './reserve-button.module.css'
 
-const ReserveButton = () => {
-    const navigate = useNavigate();
+const ReserveButton = ({ service }) => {
+    const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate('/make%20an%20appointment');
-    };
+        navigate('/make an appointment', { state: { service } })
+    }
 
     return (
         <button className="reserve-button" onClick={handleClick}>
             Zarezerwuj
         </button>
-    );
-};
+    )
+}
 
-export default ReserveButton;
+export default ReserveButton

@@ -25,7 +25,7 @@ const Sal00nItemServiceCard = ({ item }) => {
                             <p>Cena: {item.price} zł</p>
                             <p>Czas trwania: {item.time} min.</p>
                             <p>Dostępność: {item.availability}</p>
-                            <ReserveButton/>
+                            <ReserveButton service={item} />
                         </div>
                     </div>
 
