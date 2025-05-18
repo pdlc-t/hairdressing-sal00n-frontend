@@ -1,3 +1,5 @@
+// src/pages/make-an-appointment-page/TimeSlotCard.jsx
+
 import React, { useContext } from 'react'
 import classes from './make-an-appointment-page.module.css'
 import { MakingAppointmentContext } from './MakeAnAppointmentPage'
@@ -19,7 +21,20 @@ const TimeSlotCard = ({ number, isActive }) => {
             return
         }
 
-        const dateString = dateChoice.toISO({
+        // Mapujemy numer slotu na godzinę rozpoczęcia
+        const slotHourMap = { 1: 8, 2: 10, 3: 12, 4: 14, 5: 16 }
+        const hour = slotHourMap[number] ?? 0
+
+        // Łączymy datę z wybraną godziną
+        const dateWithTime = dateChoice.set({
+            hour,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        })
+
+        // Tworzymy ISO string bez offsetu i milisekund
+        const dateString = dateWithTime.toISO({
             includeOffset: false,
             suppressMilliseconds: true
         })
@@ -44,17 +59,23 @@ const TimeSlotCard = ({ number, isActive }) => {
             const result = await response.json()
             if (!response.ok) {
                 console.error('Error posting the appointment:', result)
+                alert('Failed to book appointment: ' + (result.error || response.status))
                 return
             }
 
-            console.log('Appointment booked successfully')
-            // Dopiero po udanym POST:
+            alert('Appointment booked successfully!')
             toggleAppointmentPopup()
-            refreshAppointments()
+            // Odświeżamy listę
+            if (typeof refreshAppointments === 'function') {
+                refreshAppointments()
+            } else {
+                window.location.reload()
+            }
             return result
 
         } catch (e) {
             console.error(`An error occurred: ${e}`)
+            alert('An unexpected error occurred.')
         }
     }
 
