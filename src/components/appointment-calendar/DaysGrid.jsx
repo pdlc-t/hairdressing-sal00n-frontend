@@ -46,9 +46,6 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
     if (appointmentsFetchingError) {
         return <h1 className={classes.error}>Błąd: {appointmentsFetchingError}</h1>
     }
-    if (!appointmentsData || appointmentsData.length === 0) {
-        return <h1>Ładowanie wizyt…</h1>
-    }
 
     return (
         <div className={classes.daysGrid}>

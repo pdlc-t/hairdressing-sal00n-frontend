@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react'
+// src/components/upcoming-appointments-list/UpcomingAppointmentsList.jsx
+import React, { useEffect, useState } from 'react'
 import UpcomingAppointmentCard from './UpcomingAppointmentCard'
 import classes from './upcoming-appointmenst-list.module.css'
 
-const API_URL   = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL
 
 const UpcomingAppointmentsList = () => {
     const [appointments, setAppointments] = useState([])
@@ -16,6 +17,7 @@ const UpcomingAppointmentsList = () => {
             try {
                 const token = localStorage.getItem('authToken')
                 if (!token) throw new Error('Brak tokena autoryzacyjnego')
+
                 const res = await fetch(
                     `${API_URL}/appointments/get-appointments`,
                     { headers: { 'Authorization': `Bearer ${token}` } }
@@ -27,7 +29,7 @@ const UpcomingAppointmentsList = () => {
                 const upcoming = data
                     .map(a => ({ ...a, dateObj: new Date(a.date) }))
                     .filter(a => a.dateObj > now)
-                    .sort((a,b) => a.dateObj - b.dateObj)
+                    .sort((a, b) => a.dateObj - b.dateObj)
 
                 setAppointments(upcoming)
             } catch (e) {
@@ -40,7 +42,7 @@ const UpcomingAppointmentsList = () => {
         fetchAppointments()
     }, [])
 
-    const handleCancel = (cancelledId) => {
+    const handleCancel = cancelledId => {
         setAppointments(prev => prev.filter(a => a.id !== cancelledId))
     }
 
@@ -54,18 +56,25 @@ const UpcomingAppointmentsList = () => {
         <div className={classes.appointmentsList}>
             <h1>Upcoming Appointments</h1>
             <ul>
-                {appointments.map(({ id, service_name, dateObj, time_slot }) => {
+                {appointments.map(({ id, service_name, hairdresser, dateObj }) => {
                     const dateStr = dateObj.toLocaleDateString('pl-PL', {
-                        weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric'
+                        weekday: 'long',
+                        year:    'numeric',
+                        month:   'numeric',
+                        day:     'numeric'
                     })
                     const timeStr = dateObj.toLocaleTimeString('pl-PL', {
-                        hour: '2-digit', minute: '2-digit'
+                        hour:   '2-digit',
+                        minute: '2-digit'
                     })
+                    const hairdresserName = `${hairdresser.firstName} ${hairdresser.lastName}`
+
                     return (
                         <li key={id}>
                             <UpcomingAppointmentCard
                                 id={id}
                                 service={service_name}
+                                hairdresser={hairdresserName}
                                 date={`${dateStr}, ${timeStr}`}
                                 onCancel={handleCancel}
                             />

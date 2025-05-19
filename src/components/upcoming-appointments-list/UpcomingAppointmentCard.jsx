@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+// src/components/upcoming-appointments-list/UpcomingAppointmentCard.jsx
+import React, { useState } from 'react'
 import classes from './upcoming-appointmenst-list.module.css'
 import scissors from '../../assets/svg_images/service_icons/scissors.svg'
 
-
 const API_URL = process.env.REACT_APP_API_URL
 
-const UpcomingAppointmentCard = ({ id, service, date, onCancel }) => {
+const UpcomingAppointmentCard = ({ id, service, hairdresser, date, onCancel }) => {
     const [deleting, setDeleting] = useState(false)
     const token = localStorage.getItem('authToken')
 
@@ -18,16 +18,13 @@ const UpcomingAppointmentCard = ({ id, service, date, onCancel }) => {
                 `${API_URL}/appointments/${id}`,
                 {
                     method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
+                    headers: { 'Authorization': `Bearer ${token}` }
                 }
             )
             if (!res.ok) {
                 const err = await res.json()
                 alert('Anulowanie nie powiodło się: ' + (err.error || res.status))
             } else {
-                // sukces → natychmiast usuwamy kafelek
                 onCancel(id)
             }
         } catch (e) {
@@ -41,6 +38,9 @@ const UpcomingAppointmentCard = ({ id, service, date, onCancel }) => {
     return (
         <div className={classes.cardContainer}>
             <header className={classes.serviceName}>{service}</header>
+            <div className={classes.hairdresser}>
+                Fryzjer: <strong>{hairdresser}</strong>
+            </div>
             <div className={classes.date}>{date}</div>
             <div className={classes.iconContainer}>
                 <img src={scissors} alt="scissors icon" className={classes.icon} />
