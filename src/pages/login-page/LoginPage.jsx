@@ -28,10 +28,11 @@ const LoginPage = () => {
       const data = await response.json();
       console.log('Login successful:', data);
 
-      // Save the token in localStorage
+      // Zapisz token i login do localStorage
       localStorage.setItem('authToken', data.token);
+      localStorage.setItem('username', username); // <-- Zapisujemy login użytkownika
 
-      // Redirect to the home page
+      // Przekieruj do strony głównej
       navigate('/home');
     } catch (err) {
       setError(err.message || 'An error occurred');
