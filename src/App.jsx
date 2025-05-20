@@ -18,6 +18,7 @@ import LandingPage from './pages/landing-page/LandingPage';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import './global.css';
 import {MakingAppointmentProvider} from "./context/MakingAppointmentProvider";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const router = createBrowserRouter(
@@ -50,9 +51,12 @@ function App() {
   );
 
     return (
+      <>
         <MakingAppointmentProvider>
             <RouterProvider router={router} />
         </MakingAppointmentProvider>
+        <ToastContainer position="top-right" autoClose={3000} />
+      </>
     )
 }
 

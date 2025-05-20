@@ -3,6 +3,7 @@
 import React, { useContext } from 'react'
 import classes from './make-an-appointment-page.module.css'
 import {MakingAppointmentContext} from "../../context/MakingAppointmentProvider";
+import { toast } from 'react-toastify';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -63,7 +64,6 @@ const TimeSlotCard = ({ number, isActive }) => {
                 return
             }
 
-            alert('Appointment booked successfully!')
             toggleAppointmentPopup()
             // Odświeżamy listę
             if (typeof refreshAppointments === 'function') {
@@ -71,11 +71,13 @@ const TimeSlotCard = ({ number, isActive }) => {
             } else {
                 window.location.reload()
             }
+
+            toast.success("Appointment booked successfully!");
             return result
 
         } catch (e) {
             console.error(`An error occurred: ${e}`)
-            alert('An unexpected error occurred.')
+            toast.error('An unexpected error occurred.');
         }
     }
 
