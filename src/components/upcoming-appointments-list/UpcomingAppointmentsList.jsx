@@ -19,7 +19,7 @@ const UpcomingAppointmentsList = () => {
                 if (!token) throw new Error('Brak tokena autoryzacyjnego')
 
                 const res = await fetch(
-                    `${API_URL}/appointments/get-appointments`,
+                    `${API_URL}/appointments/get-clients-appointments`,
                     { headers: { 'Authorization': `Bearer ${token}` } }
                 )
                 if (!res.ok) throw new Error(`HTTP ${res.status}`)
