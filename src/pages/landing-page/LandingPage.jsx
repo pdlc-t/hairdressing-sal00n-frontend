@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.title}>Welcome to Hairdressing Sal00n</h1>
+      <h1 className={classes.title}>Welcome to the fRyZjErSkA sAl00nA</h1>
       <p className={classes.subtitle}>Your one-stop solution for all your hairdressing needs!</p>
       <button className={classes.button} onClick={handleLoginRedirect}>
         Login
