@@ -42,6 +42,12 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
         return 'red'
     }
 
+    const isPast = day => {
+        const now = DateTime.now().startOf('day');
+        const target = day.startOf('day');
+        return target <= now;
+    }
+
     // Obsługa stanów: błąd, ładowanie
     if (appointmentsFetchingError) {
         return <h1 className={classes.error}>Błąd: {appointmentsFetchingError}</h1>
@@ -60,6 +66,7 @@ const DaysGrid = ({ firstDayOfActiveMonth }) => {
                         day.year === today.year
                     }
                     availability={determineAvailability(day)}
+                    isPast={isPast(day)}
                 />
             ))}
         </div>

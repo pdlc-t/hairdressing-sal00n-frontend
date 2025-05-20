@@ -82,6 +82,20 @@
   border: 3px #00ff7f solid;
 }
 
+.dayTile.pastDay:not(.blackedout) {
+  background: rgb(0, 0, 0);
+}
+
+.dayTile.pastDay:not(.blackedout):hover {
+  transform: none;
+  border: 3px #ffd700 solid;
+}
+
+.dayTile.pastDay.currentDay:not(.blackedout):hover {
+  transform: none;
+  border: 3px #00ffff dashed;
+}
+
 .headControlsContainer {
   display: flex;
   flex-direction: column;
