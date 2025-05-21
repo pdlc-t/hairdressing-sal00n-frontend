@@ -8,8 +8,8 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const PastAppointmentsList = () => {
     const [appointments, setAppointments] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [loading, setLoading]           = useState(true)
+    const [error, setError]               = useState(null)
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -28,9 +28,13 @@ const PastAppointmentsList = () => {
 
                 const now = new Date()
                 const past = data
-                    .map(a => ({ ...a, dateObj: new Date(a.date) }))
+                    .map(a => ({
+                        ...a,
+                        dateObj: new Date(a.date),
+                        price: a.price  // <-- zakładamy, że backend zwraca `price`
+                    }))
                     .filter(a => a.dateObj < now)
-                    .sort((a, b) => b.dateObj - a.dateObj)  // najpierw te najnowsze
+                    .sort((a, b) => b.dateObj - a.dateObj)
 
                 setAppointments(past)
             } catch (e) {
@@ -53,16 +57,12 @@ const PastAppointmentsList = () => {
         <div className={classes.appointmentsList}>
             <h1>Past Appointments</h1>
             <ul>
-                {appointments.map(({ id, service_name, hairdresser, dateObj }) => {
+                {appointments.map(({ id, service_name, hairdresser, dateObj, price }) => {
                     const dateStr = dateObj.toLocaleDateString('pl-PL', {
-                        weekday: 'long',
-                        year:    'numeric',
-                        month:   'numeric',
-                        day:     'numeric'
+                        weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric'
                     })
                     const timeStr = dateObj.toLocaleTimeString('pl-PL', {
-                        hour:   '2-digit',
-                        minute: '2-digit'
+                        hour: '2-digit', minute: '2-digit'
                     })
                     const hdName = `${hairdresser.firstName} ${hairdresser.lastName}`
 
@@ -74,6 +74,7 @@ const PastAppointmentsList = () => {
                                 date={`${dateStr}, ${timeStr}`}
                                 hairdresserId={hairdresser.id}
                                 hairdresserName={hdName}
+                                price={price}                // <-- przekazujemy cenę
                             />
                         </li>
                     )

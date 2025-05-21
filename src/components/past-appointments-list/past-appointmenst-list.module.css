@@ -18,14 +18,21 @@
 .cardContainer {
   display: grid;
   padding: 15px 30px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows:
+    auto  /* service */
+    auto  /* hairdresser */
+    auto  /* date */
+    auto  /* price */
+    auto  /* stars */
+    auto; /* commentForm */
   grid-template-areas:
-    'service    service    service    service    service'
-    'hairdresser hairdresser hairdresser hairdresser hairdresser'
-    'date       date       date       date       date'
-    'stars      stars      stars      comment    comment'
-    'commentForm commentForm commentForm commentForm commentForm';
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-auto-rows: minmax(40px, auto);
+    "service    actions"
+    "hairdresser actions"
+    "date       actions"
+    "price      actions"
+    "stars      actions"
+    "commentForm commentForm";
   gap: 8px;
   margin: 20px 0;
   border-radius: 50px 0 50px 0;
@@ -44,19 +51,19 @@
 .cardContainer .serviceName {
   grid-area: service;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .cardContainer .hairdresser {
   grid-area: hairdresser;
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  margin-bottom: 4px;
+  font-size: 1.3rem;
 }
 
 .cardContainer .hairdresser img {
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
   margin-right: 8px;
 }
 
@@ -65,13 +72,19 @@
   font-size: 1.2rem;
 }
 
+.cardContainer .price {
+  grid-area: price;
+  font-size: 1.2rem;
+}
+
 .cardContainer .iconContainer {
-  display: none; /* usuwamy ikonę nożyczek w past appointments */
+  display: none; /* nie używane tutaj */
 }
 
 .cardContainer .stars {
   grid-area: stars;
   display: flex;
+  align-items: center;
   gap: 4px;
   font-size: 1.5rem;
 }
@@ -87,8 +100,9 @@
 }
 
 .cardContainer .commentButton {
-  grid-area: comment;
-  justify-self: end;
+  grid-area: actions;
+  justify-self: start;
+  align-self: start;
   background: #ffd700;
   color: #007474;
   border: none;
@@ -99,11 +113,16 @@
   transition: background 0.3s;
 }
 
-.cardContainer .commentButton:hover {
+.cardContainer .commentButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cardContainer .commentButton:hover:not(:disabled) {
   background: #e5c100;
 }
 
-/* Nowy formularz komentarza */
+/* Formularz komentarza */
 .cardContainer .commentForm {
   grid-area: commentForm;
   display: flex;

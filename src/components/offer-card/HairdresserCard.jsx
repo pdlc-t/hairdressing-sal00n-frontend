@@ -1,9 +1,13 @@
-import React from 'react';
-import styles from './hairdresser-item-card.module.css';
+// src/components/hairdresser-grid/HairdresserCard.jsx
+import React from 'react'
+import styles from './hairdresser-item-card.module.css'
 
 const HairdresserCard = ({ hairdresser }) => {
-    const { firstName, lastName, specialties, rating } = hairdresser;
-    const stars = Array.from({ length: 5 }, (_, i) => i < rating);
+    const { firstName, lastName, specialties, rating } = hairdresser
+
+    // rating może być null lub undefined
+    const filledCount = typeof rating === 'number' ? rating : 0
+    const stars = Array.from({ length: 5 }, (_, i) => i < filledCount)
 
     return (
         <div className={styles.cardContainer}>
@@ -23,9 +27,9 @@ const HairdresserCard = ({ hairdresser }) => {
           </span>
                 ))}
             </div>
-            <p className={styles.ratingText}>Ocena: {rating}/5</p>
+            <p className={styles.ratingText}>Ocena: {filledCount}/5</p>
         </div>
-    );
-};
+    )
+}
 
-export default HairdresserCard;
+export default HairdresserCard
