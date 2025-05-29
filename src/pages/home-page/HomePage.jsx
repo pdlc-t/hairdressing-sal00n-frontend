@@ -10,9 +10,6 @@ const DashboardPage = () => {
             <section className={classes.upcomingAppointments}>
                 <UpcomingAppointmentsList />
             </section>
-            <section className={classes.tilesGrid}>
-                <TilesGrid />
-            </section>
         </div>
     )
 }
